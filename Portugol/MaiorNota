@@ -1,0 +1,24 @@
+programa {
+	
+	funcao inicio()
+	{
+		
+		inteiro nota[5], confere = 0, maiorNota=0
+		
+		para (inteiro cont=0; cont < 5; cont++)
+		{ 
+			escreva ("Entre com a nota: ") 
+			leia (nota[cont])
+			
+			se (nota[cont] > confere)
+			{
+				confere = nota[cont]
+			} 
+			
+		} 
+
+		maiorNota = confere
+		escreva ("A maior nota é: ", maiorNota) 
+		
+	} 
+}
