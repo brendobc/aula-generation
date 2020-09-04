@@ -33,7 +33,7 @@ public class PostagensController {
 	
 	///postagens/númeroId / PathVariable é a variável que recebe pelo caminho(url)
 	//return: pode receber tanto um objeto do tipo postagem (.ok) ou um notFound caso exista algum erro
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> getById(@PathVariable long id)
 	{
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
