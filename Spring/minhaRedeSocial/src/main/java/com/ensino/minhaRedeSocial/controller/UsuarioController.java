@@ -20,39 +20,39 @@ import com.ensino.minhaRedeSocial.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin("*")
+@CrossOrigin(origins="*", allowedHeaders="*")
 public class UsuarioController {
 
 	@Autowired
-	private UsuarioRepository repo;
+	private UsuarioRepository repository;
 	
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAllUsuario()
 	{
-		return ResponseEntity.ok(repo.findAll());
+		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> findByIdUsuario(@PathVariable long id)
 	{
-		return repo.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
 	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario)
 	{
-		return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(usuario));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
 	
 	@PutMapping
 	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(repo.save(usuario));
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id)
 	{
-		repo.deleteById(id);
+		repository.deleteById(id);
 	}
 }
